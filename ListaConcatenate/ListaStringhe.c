@@ -6,6 +6,7 @@
  e implementa le funzioni per
  stampare la lista
  inserire un nodo in testa alla lista
+ inserire un nodo in coda alla lista
  eliminare il nodo in testa alla lista
  eliminare il nodo in coda alla lista
  eliminare tutti i nodi contenenti una determinata stringa
