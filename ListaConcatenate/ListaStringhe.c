@@ -25,6 +25,7 @@
 /* prototipi */
 int menu();
 void inserisci(char*);
+void inseriscicoda(char*);
 void display();
 void eliminaTesta();
 void eliminaCoda();
@@ -102,6 +103,11 @@ int main()
             case 10:
                 rovesciastringhe();
                 break;
+            case 11:
+                printf("\n\nInserisci una stringa per la lista:");
+                scanf("%s", stringa);
+                inseriscicoda(stringa);
+                break;
             case 0:
                 break;
             default:
@@ -130,6 +136,7 @@ int menu()
     printf("\nMenu: (8) Elimina un carattere della stringa");
     printf("\nMenu: (9) Elimina un carttere presnente in una posizione precisa:");
     printf("\nMenu: (10) Stampa le stringhe rovesciate");
+    printf("\nMenu: (11) Inserisci stringa in coda");
     printf("\nInserisci la scelta:");
     scanf("%d", &choice);
     return choice;
@@ -156,6 +163,30 @@ void inserisci(char* stringa)
     
 }
 
+
+
+void inseriscicoda(char* stringa)
+{
+    printf("\nHai scelto di inserire la stringa: %s", stringa);
+
+    Nodo *ptr = headList;
+    Nodo *new = (Nodo*) malloc (sizeof(Nodo));
+
+    new -> s = (char*) malloc ((sizeof(stringa)+1)*sizeof(char));
+
+    strcpy(new->s, stringa);
+
+    /*scorrimento verso la fine */
+    new -> link = NULL;
+    if (!ptr) headList = new;
+    else
+    {
+        while (ptr && ptr->link)
+            ptr = ptr->link;
+
+        ptr->link = new;
+    }
+}
 
 
 
@@ -407,7 +438,6 @@ void rovesciastringhe()
         cur = cur->link;
     }
 }
-
 
 
 
