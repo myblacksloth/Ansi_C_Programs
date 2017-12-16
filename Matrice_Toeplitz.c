@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 
-int toeplirz(int, char);
+int toeplitz(int n, char matrix[n][n]);
 
 
 int main(int arcg, char* argv[])
