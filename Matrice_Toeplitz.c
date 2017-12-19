@@ -13,7 +13,7 @@
 int toeplitz(int n, char matrix[n][n]);
 
 
-int main(int arcg, char* argv[])
+int main(int argc, char* argv[])
 {
     
     int n = 0;
