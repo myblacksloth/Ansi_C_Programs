@@ -1,6 +1,5 @@
 # Antonio Maulucci's Ansi C Programs
 
-![enter image description here](http://www.antomau.com/AntonioMaulucciLogo.png)
 ![](https://img2.freepng.es/20180405/doe/kisspng-the-c-programming-language-computer-programming-co-programmer-5ac6bd83099b97.1672069615229740830394.jpg =150x)
 
 ----------
