@@ -1,3 +1,5 @@
+/* (C) Antonio Maulucci 2023 https://antomau.com */
+
 typedef enum
 {
 success                 = 0,
