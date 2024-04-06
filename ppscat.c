@@ -42,6 +42,7 @@ int main(int argc, char** argv)
         FILE* reading = NULL;
         char tmp[4096] = {};
         char* content = NULL;
+        void (*memf)(char**, char**)=&closeall;
 
         int choice = -1;
         char* options="f:";
@@ -71,26 +72,26 @@ int main(int argc, char** argv)
         reading = fopen(fname, "r");
         if (! reading)
         {
-                errno=ENOENT; perror("Unable to read");                closeall(&fname, &content);         exit(2);
+                errno=ENOENT; perror("Unable to read");     (*memf)(&fname, &content);        exit(2);
         }
 
         content = (char*)malloc(sizeof(char));
         if (! content)
         {
-                errno=ENOMEM; perror("Errore"); closeall(&fname, &content);
+                errno=ENOMEM; perror("Errore"); (*memf)(&fname, &content);
                 exit(3);
         }
         while (! feof(reading))
         {
                 /*fscanf(reading, "%s", tmp);*/ fgets(tmp, 4096, reading);
-                content = (char *)realloc (content, sizeof(char)*(strlen(content)+strlen(tmp)+/*2*/1)); if (! content) {errno=ENOENT; perror("Errore"); closeall(&fname, &content); exit(4);} strcat(content, tmp); /*strcat(content, "\n");*/ memset(tmp, 0, 4096);
+                content = (char *)realloc (content, sizeof(char)*(strlen(content)+strlen(tmp)+/*2*/1)); if (! content) {errno=ENOENT; perror("Errore"); (*memf)(&fname, &content); exit(4);} strcat(content, tmp); /*strcat(content, "\n");*/ memset(tmp, 0, 4096);
         }
 
         if (content) { printf("%s", content); }
 
         fclose(reading);
 
-        closeall(&fname, &content);
+        (*memf)(&fname, &content);
         if (fname || content)
         {
                 errno=EFAULT; perror("ecchecca");
